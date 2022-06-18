@@ -3,8 +3,6 @@ import numpy.linalg as la
 import scipy
 from numba import jit
 import matplotlib.pyplot as plt
-import os
-import re
 #Tolerance <global>
 
 import global_var
@@ -113,7 +111,6 @@ def find_symmetry(mol_: Molecule)->dict:
                 ]).T
             #Oh and Th group
             else:
-                print(c2list)
                 if len(c2list) == 3:
                     point_group = "T_h"
                     rank = 24

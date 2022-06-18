@@ -1,20 +1,28 @@
 import numpy as np
 import numpy.linalg as la
+import os
 import re
 import global_var
-
-
+from periodic import Periodic_table
 #------------------------import periodic table------------------------
 elements = {}
 elements_s_name = {}
-with open("./elements.txt") as ele:
+atom_lists = Periodic_table.strip("\n").split("\n")
+for elements_str in atom_lists:
+    tup = elements_str.strip()
+    Snum = int(re.search(r"\d+", tup).group())
+    name = re.search(r"\"\D+\"", tup).group()[1:-1]
+    mass = int(re.search(r"\d+ *\}", tup).group()[:-1].strip())
+    elements[name] = (Snum, mass)
+    elements_s_name[Snum] = name
+"""with open(os.path.join(os.getcwd(), "elements.txt")) as ele:
     for line in ele.readlines():
         tup = line.strip()
         Snum = int(re.search(r"\d+", tup).group())
         name = re.search(r"\"\D+\"", tup).group()[1:-1]
         mass = int(re.search(r"\d+ *\}", tup).group()[:-1].strip())
         elements[name] = (Snum, mass)
-        elements_s_name[Snum] = name
+        elements_s_name[Snum] = name"""
 #--------------------------------------------------------------------- 
 
 class Atomtype:
@@ -89,6 +97,12 @@ class Molecule(list):
     def atomtypes(self):
         return [iatom.element for iatom in self]
 
+    def chem_formula(self):
+        ele, count = np.unique(self.atomtypes(),return_counts=True)
+        outstr = ''
+        for i in range(len(ele)):
+            outstr += ele[i]+str(count[i])
+        return outstr
     def __str__(self):
         output = "\tAtom\tx\t\ty\t\tz\t\t\n"
         for iatom in self:

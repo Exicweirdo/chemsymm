@@ -3,6 +3,9 @@ To decide point group symmetry of molecules
 
 Support all point groups and SO(3) for single atom
 ## Example
+The examples.bat shows the basic function of this program. 
+
+To test your own molecules, using commandline as follow. .xyz and .gjf formats is supported.
 ```bash
 (base) PS root-path> python .\src\main.py -f .\examples\molecules\BH3.gjf
  
@@ -27,3 +30,8 @@ standard_base: [[-8.52263495e-01  5.23112736e-01  0.00000000e+00]
  [-1.42071544e-23 -2.31465193e-23  1.00000000e+00]]
 ---------------------------------------------------
 ```
+## Functions
+- Find the point group symmetry of molecules.
+- show the number of elements in the point group
+- determine the standard basis of molecules
+- move and rotate the molecules to the standard direction, usually z-axis is the main axis

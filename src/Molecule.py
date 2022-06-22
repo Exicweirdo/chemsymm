@@ -81,8 +81,12 @@ class Atomtype:
         else:
             return True
 
-    def to_list(self):
-        return [self.element, self.xyz[0], self.xyz[1], self.xyz[2]]
+    def to_list(self)->list:
+        return [self.element,
+            round(self.xyz[0], ndigits=6),
+            round(self.xyz[1], ndigits=6),
+            round(self.xyz[2], ndigits=6),
+        ]
 
     def xyzm(self):
         return np.append(self.xyz, self.mass())
@@ -101,7 +105,10 @@ class Molecule(list):
         ele, count = np.unique(self.atomtypes(),return_counts=True)
         outstr = ''
         for i in range(len(ele)):
-            outstr += ele[i]+str(count[i])
+            if count[i]>1:
+                outstr += ele[i]+str(count[i])
+            else:
+                outstr += ele[i]
         return outstr
     def __str__(self):
         output = "\tAtom\tx\t\ty\t\tz\t\t\n"
@@ -111,7 +118,7 @@ class Molecule(list):
             )
         return(output)
 
-    def aslist(self):
+    def aslist(self)->list:
         return [iatom.to_list() for iatom in self]
     
     def asarray(self):

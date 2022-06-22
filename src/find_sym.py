@@ -16,7 +16,8 @@ def find_symmetry(mol_: Molecule)->dict:
     rank = 0
     # reset center of mass to zero
     m_tot = np.sum(mol_.asarray()[3,:])
-    mol = mol_ + -(m_cent(mol_.asarray()))
+    mass_center = m_cent(mol_.asarray())
+    mol = mol_ + -mass_center
     # print(m_cent(mol.asarray()))
     has_i = identical(mol, mol.inverse())
     # calculate inertia tensor
@@ -231,6 +232,7 @@ def find_symmetry(mol_: Molecule)->dict:
         "rotation_type": rot_type,
         "inertia moment": moment1,
         "i": has_i,
+        "m_center":mass_center,
         "standard_base": std_base
     }
     return sym

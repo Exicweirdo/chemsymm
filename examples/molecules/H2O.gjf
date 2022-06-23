@@ -1,0 +1,14 @@
+%chk=D:\Chem\?????\Chem_pointgroup\examples\molecules\H2O.chk
+# hf/3-21g geom=connectivity
+
+Title Card Required
+
+0 1
+ O                  0.13793103   -1.17241378    0.00000000
+ H                  1.09793103   -1.17241378    0.00000000
+ H                 -0.18252356   -0.26747794    0.00000000
+
+ 1 2 1.0 3 1.0
+ 2
+ 3
+

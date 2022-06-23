@@ -55,7 +55,7 @@ def parse_arg():
         help="the file output informations will be write to, the default is sys.stdout"
     )
     parser.add_argument("-o", "--output", type=str, default=None, 
-        nargs="?", const="*_sym.gjf",
+        nargs="?", const="./sym_molecules/*_sym.gjf",
         help="output symmetrized files, should correspond with input files, default is .gjf"
     )
     parser.add_argument("-p", "--printmolecule", action="store_true",
@@ -79,11 +79,11 @@ if __name__ == "__main__":
 
     if args.output:
         if isinstance(args.output, str):
-            outputlist = [args.output.replace("*", os.path.splitext(path)[0]) for path in infiles]
+            outputlist = [args.output.replace("*", os.path.basename(os.path.splitext(path)[0])) for path in infiles]
         else:
             outputlist = args.output
     else:
-        outputlist = [None * len(infiles)]
+        outputlist = [None] * len(infiles)
 
     if not infiles:
         print("there's no file to process", file=log)

@@ -111,11 +111,15 @@ molecular formula: {mol.chem_formula()}
     print("---------------------------------------------------", file=log)
 
     if out_file != None:
+        sym_mol = mol.trans(-sym["m_center"])*sym["standard_base"].T
+        sym_mol.sort()
+        if os.path.exists(os.path.dirname(out_file)) == 0:
+            os.makedirs(os.path.dirname(out_file))
         with open(out_file, mode='w') as out:
             if mode == ".xyz":
-                write_xyz(mol.trans(-sym["m_center"])*sym["standard_base"].T, out)
+                write_xyz(sym_mol, out)
             elif mode == ".gjf":
-                write_gjf(mol.trans(-sym["m_center"])*sym["standard_base"].T, out)
+                write_gjf(sym_mol, out)
     return 0
 
 

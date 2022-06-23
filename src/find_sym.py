@@ -200,7 +200,7 @@ def find_symmetry(mol_: Molecule)->dict:
                 rank = 4
         elif sum(C2_xyz) == 1:
             has_sigmav = identical(mol, mol.reflect(np.array([0, 1, 0])))
-
+            std_base = std_base[:, [(np.argmax(C2_xyz)-2)%3, (np.argmax(C2_xyz)-1)%3, np.argmax(C2_xyz)]]
             if has_sigmav:
                 point_group = "C_2v"
                 rank = 4

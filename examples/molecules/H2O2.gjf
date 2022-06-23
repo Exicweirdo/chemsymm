@@ -1,0 +1,16 @@
+%chk=D:\Chem\?????\Chem_pointgroup\examples\molecules\H2O2.chk
+# hf/6-311+g(d) nosymm geom=connectivity
+
+Title Card Required
+
+0 1
+ O                  0.10718974   -1.15589250    0.11754144
+ H                 -0.20550720   -0.30393332   -0.13490005
+ O                  1.48205320   -1.02389896    0.03369749
+ H                  1.76717464   -1.18833420    0.91631142
+
+ 1 2 1.0 3 1.0
+ 2
+ 3 4 1.0
+ 4
+

@@ -1,2 +1,5 @@
 *.ipynb
 src/__pycache__/
+build/
+/examples/sym_molecules/
+*.log
